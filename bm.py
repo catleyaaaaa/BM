@@ -45,7 +45,7 @@ def radixsort( aList ):
     # declare and initialize buckets
     buckets = [list() for _ in range( RADIX )]
 
-    # split aList between lists
+ 
     for  i in aList:
       tmp = i // placement
 ##      print ("i is " , i)
