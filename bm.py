@@ -56,7 +56,7 @@ def radixsort( aList ):
       if maxLength and tmp > 0:
         maxLength = False
 
-    # empty lists into aList array
+    
     a = 0
     for b in range( RADIX ):
       buck = buckets[b]
