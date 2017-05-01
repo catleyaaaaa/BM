@@ -1,0 +1,49 @@
+<?php
+   session_start();
+   if($_SESSION['UserID'] == "")
+   {
+      header('Location: ./login.php');
+      exit();
+   }
+   
+   mysql_connect("localhost","root","1234") or die("NOT CONNECT");
+   mysql_select_db("mystore") or die("NOT select");
+   $dsur = "SELECT * FROM customer WHERE username = '".$_SESSION['UserID']."' ";
+   $dbuser= mysql_query($dsur);
+   $login = mysql_fetch_array($dbuser);
+?>
+<html>
+<body style="background-color:#FFCCCC">
+<body background="http://i354.photobucket.com/albums/r434/kathy2516/wallpaper/blue-w/1208530443.jpg">
+   <center><br><br><br>
+	<a href=""><font color="red" size = 4>เพิ่มข้อมูลลูกค้า</font></a>
+   <br><br>
+   <table width="700"><tr><td width="400"></td><td><?php echo "<h4> สวัสดีครับคุณ : ".$login['username']."&nbsp;&nbsp;&nbsp;<a href='./logout.php'>ลงชื่อออก</a>"."</h4>" ;?></td></tr></table>
+   <font color="blue" size = 4>ข้อมูลลูกค้า</font>
+   <br>
+   
+<table width="500" border="3"  bordercolor="green">
+	<tr>
+		<th>ID</th>
+		<th>Username</th>
+		<th>Password</th>
+      <th>ชื่อ - นามสกุล</th>
+		<th>เบอร์โทรศัพท์</th>
+		<th>แก้ไข</th>
+		<th>ลบ</th>
+	</tr>
+   <br>
+   <tr>
+      <td>1</td>
+      <td>root</td>
+      <td>1234</td>
+      <td>นาย นราธิป ปาระมี</td>
+      <td>088-2685321</td>
+      <td><a href="">แก้ไข</a></td>
+      <td><a href="">ลบ</a></td>
+   </tr>
+</table>
+
+</center>
+</body>
+</html>
