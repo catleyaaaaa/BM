@@ -1,0 +1,148 @@
+<html>
+<body>
+<head>
+<meta http-equiv=Content-Type content="text/html; charset=utf-8"> 
+</head>
+<body>
+<script language="javascript">
+function fncSubmit()
+{
+	if(document.form1.first.value == "")
+	{
+		alert('กรุณาใส่ชื่อ');
+		document.form1.first.focus();
+		return false;
+	}
+	if(document.form1.last.value == "")
+	{
+		alert('กรุณาใส่นามสกุล');
+		document.form1.last.focus();
+		return false;
+	}
+	if(document.form1.user.value == "")
+	{
+		alert('กรุณาใส่ Username');
+		document.form1.user.focus();
+		return false;
+	}	
+	if(document.form1.pass.value == "")
+	{
+		alert('กรุณาใส่ Password');
+		document.form1.pass.focus();
+		return false;
+	}	
+	if(document.form1.email.value == "")
+	{
+		alert('กรุณาใส่ E-mail');
+		document.form1.email.focus();
+		return false;
+	}	
+	if(document.form1.pass.value != document.form1.conpass.value)
+	{
+		alert('รหัสผ่านไม่ตรงกัน');
+		document.form1.pass.focus();
+		return false;
+	}	
+
+	if(!document.form1.agree.checked )
+	{
+		alert('ไม่ได้ยอมรับข้อตกลง');
+		document.form1.agree.focus();
+		return false;
+	}	
+
+	
+
+	document.form1.submit();
+}
+</script>
+</script>
+<body bgcolor="#C0C0C0"> <font size = "4"> <FONT COLOR="blue">
+	<form name="form1" action="index2.php" method="post" OnSubmit="return fncSubmit();">
+<fieldset>
+		<legend><b><u><font color="green" size = 3><h1>Personal Into</h1></font></u></b></legend>
+	</legend>
+		<br>
+		Fristname :
+		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		<input type="text" name="first" size="35"> 
+		<br><br>
+		Lastname :  
+		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		<input type="text" name="last" size="35">
+		<br><br>		
+		Gender :
+		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		<input type = "radio" name = "gender" value = "ชาย"> Male
+		<input type = "radio" name = "gender" value = "หญิง"> Female
+		<br><br>
+		Birth Day : 
+		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		<select name="date">
+		<?
+			$date[31] ;
+			for($i=1;$i<32;$i++){
+			$date[$i]=$i ;
+			?>
+			<option  value='<?=$date[$i]?>'><? echo $i ; ?></option>
+			<? } ?>
+		</select>
+
+			<?
+				$mount[13] ;
+				$mount[1]="มกราคม" ;
+				$mount[2]="กุมภาพันธ์" ;
+				$mount[3]="มีนาคม" ;
+				$mount[4]="เมษายน" ;
+				$mount[5]="พฤษภาคม" ;
+				$mount[6]="มิถุนายน" ;
+				$mount[7]="กรกฎาคม" ;
+				$mount[8]="สิงหาคม" ;
+				$mount[9]="กันยายน" ;
+				$mount[10]="ตุลาคม" ;
+				$mount[11]="พฤศจิกายน" ;
+				$mount[12]="ธันวาคม" ;
+			?>
+				<select name="mount">
+					<?
+				for($j=1;$j<13;$j++){
+					?>
+				<option  value='<?=$mount[$j]?>'><? echo $mount[$j] ; ?></option>
+			<?
+				}
+			?>
+				</select>
+
+			<select name="years">
+		<?
+			$years[100] ;
+			for($k=1;$k<101;$k++){
+			$years[$k]=$k+2460 ;
+			?>
+			<option  value='<?=$years[$k]?>'><? echo $k+2460 ; ?></option>
+			<? }  ?>
+			</select><br><br>
+</fieldset>
+
+<fieldset>
+<legend><b><u><font color="#FF0066" size = 3><h1>Account Into</h1></font></u></b></legend>
+<br>
+Username : 
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<input type="text" name="user" size="35"> <br><br>
+Password :
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<input type="password" name="pass"  size="35"> <br><br>
+Confirm Password : 
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<input type="password" name="conpass" size="35"> <br><br>
+E-mail : 
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<input type="text" name="email" size="35"> <br><br>
+<input type="checkbox" name="agree"  >I agee the Terms of Service and Privacy Policy.<br><br>
+<input type="submit" value="Submit" />
+<br>
+</fieldset>
+</form>
+</body>
+</html>
