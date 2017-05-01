@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<body style="background-color:#FFCCCC" >
+<center> 
+  
+<font color="red" size = 5>ข้อมูลลูกค้า</font>
+<fieldset style ="width:40%">
+<a href="add_customer.php"><font color="blue" size = 5>เพิ่มข้อมูลลูกค้า</font></a>
+<table border="3" bordercolor="green">
+  <tr>
+    <td>ID</td>
+    <td>ชื่อ</td>
+    <td>นามสกุล</td>
+    <td>จังหวัด</td>
+    <td>โทรศัพท์</td>
+    <td>แก้ไข</td>
+    <td>ลบ</td>
+
+  </tr>
+
+<?php
+
+$host="localhost";
+$user="root";
+$pass="1234";
+$db="mystore";
+
+mysql_connect("localhost", "root", "1234") or die(mysql_error()); 
+mysql_select_db("mystore") or die(mysql_error());
+mysql_query("SET NAMES UTF8");
+
+$head=ucwords("ข้อมูลลูกค้า:");
+$data=mysql_query("SELECT * FROM customer");
+while ($a=mysql_fetch_array($data) ){
+ echo "<tr><td>".$a['Customer_id']."</td>
+  <td>".$a['Customer_Name']."</td>
+  <td>".$a['Customer_Lastname']."</td>
+  <td>".$a['Province']."</td>
+  <td>".$a['Telephone']."</td>
+  <td><a href='edit_customer.php?uid=".$a['Customer_id']."'>แก้ไข</a></td>
+  <td><a href='del_customer.php?uid=".$a['Customer_id']."'>ลบ</a></td>
+ 
+
+ </tr>";
+}
+
+
+?>
+
+</table>
+</center>
+</fieldset>
+</body>
+</html>
