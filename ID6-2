@@ -1,0 +1,82 @@
+<html>
+<body>
+<head>
+		<meta http-equiv=Content-Type content="text/html; charset=utf-8"> 
+</head>
+<body>
+<?
+
+	function month($m){
+		if($m==1)
+		return "มกราคม" ;
+		
+		if($m==2)
+		return "กุมภาพันธ์" ;
+		
+		if($m==3)
+		return "มีนาคม" ;
+		
+		if($m==4)
+		return "เมษายน" ;
+		
+		if($m==5)
+		return "พฤษภาคม" ;
+
+		if($m==6)
+		return "มิถุนายน" ;
+		
+		if($m==7)
+		return "กรกฏาคม" ;
+		
+		if($m==8)
+		return "สิงหาคม" ;
+		
+		if($m==9)
+		return "กันยายน" ;
+
+		if($m==10)
+		return "ตุลาคม" ;
+		
+		if($m==11)
+		return "พฤศจิกายน" ;
+
+		if($m==12)
+		return "ธันวาคม" ;
+
+}
+
+	$first=$_REQUEST["first"] ;
+	$last=$_REQUEST["last"] ;
+	$gender=$_REQUEST["gender"] ;
+	$day= $_REQUEST["date"] ;
+	$mount= $_REQUEST["mount"] ;
+	$year= $_REQUEST["years"] ;
+	$user=$_REQUEST["user"] ;
+	$pass=$_REQUEST["pass"] ;
+	$email=$_REQUEST["email"] ;
+
+	echo "<br>" ;
+	echo "ชื่อ-นามสกุล : 
+	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+	".$first." ".$last."<br><br>" ;
+	echo "เพศ :
+	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+	".$gender."<br><br>" ;
+	echo "วันเกิด :
+	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+	".$day." ".$mount." พ.ศ ".$year."<br><br>" ;
+	echo "Username :
+	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+	".$user."<br><br>" ;
+	echo "Password : 
+	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+	".$pass."<br><br>" ;
+	echo "E-mail : 
+	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+	".$email."<br><br>" ;
+	echo "วันที่ลงทะเบียน :
+	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+	".date("l")." ".month(date("m"))." ".date("d").",".date("Y")." ".date("H:i:s")." ".date("a") ;
+?>
+</body>
+</html>
