@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+
+<html>
+<body style="background-color:#99CCFF" >
+
+<?php
+  $mount=array("มกราคม","กุมภาพันธ","มีนาคม","เมษายน","พฤษภาคม","มิถุนายน","กรกฎาคม","สิงหาคม","กันยายน","ตุลาคม","พฤศจิกายน","ธันวาคม");
+?>
+
+<form method="post" action="">
+<center><fieldset style ="width:40%">
+
+  	<legend><font color="blue" size = 5>ข้อมูลลูกค้า</font></legend>
+  	<center><table>
+  		<tr>
+  			<td>ชื่อ :</td>
+  			<td><input type="text" name="fname"></td>
+  		</tr>
+  		<tr>
+  			<td>นามสกุล :</td>
+  			<td><input type="text" name="lname"></td>
+  		</tr>
+  		<tr>
+  			<td>เพศ:</td>
+  			<td><input type="radio" name="gender" value="Male"> Male <input type="radio" name="gender" value="Female"> Female </td>
+  		</tr>
+      <tr>
+        <td>อายุ :</td>
+        <td><input type="text" name="age"></td>
+      </tr>
+  		<tr>
+  			<td>วัน-เดือน-ปี เกิด :</td>
+  			<td><input type="date" name="date"></td>
+  		<tr>
+        <td>ที่อยู่:</td>
+        <td><input type="text" name="address"></td>
+      </tr>
+      <tr>
+        <td>จังหวัด:</td>
+        <td><input type="text" name="province"></td>
+      </tr>
+      <tr>
+        <td>รหัสไปรษณีย์ :</td>
+        <td><input type="text" name="zipcode"></td>
+      </tr>
+      <tr>
+        <td>โทรศัพท์ :</td>
+        <td><input type="text" name="telephone"></td>
+      </tr>
+      <tr>
+        <td>รายละเอียดอื่นๆ:</td>
+        <td><input type="text" name="customer_description"></td>
+      </tr>
+  		</tr>
+  	</table></center>
+</fieldset>
+
+<fieldset style ="width:40%">
+  	<legend><font color="red" size = 5>Account ของลูกค้า</font></legend>
+    <center><table>
+      <tr>
+        <td>Username :</td>
+        <td><input type="text" name="user"></td>
+      </tr>
+      <tr>
+        <td>Password :</td>
+        <td><input type="password" name="pass"></td>
+      </tr>
+      <tr>
+        <td>Confirm Password :</td>
+        <td><input type="password" name="con"></td>
+      </tr>
+     
+      <tr>
+      
+        <td><input type="submit" value="Submit" name="Submit"></td>
+        <td><input type="submit" value="Cancel" name="Cancel"></td>
+        
+      </tr></table>
+</fieldset>
+</form>
+
+<?php
+$host="localhost";
+$user="root";
+$pass="1234";
+$db="mystore";
+
+mysql_connect("localhost", "root", "1234") or die(mysql_error()); 
+mysql_select_db("mystore") or die(mysql_error());
+
+error_reporting( error_reporting() & ~E_NOTICE );
+
+mysql_query("SET NAMES UTF8");
+$fname=$_POST['fname'];
+$lname=$_POST['lname'];
+$garden=$_POST['gender'];
+$age=$_POST['age'];
+$date=$_POST['date'];
+$address=$_POST['address'];
+$province=$_POST['province'];
+$zipcode=$_POST['zipcode'];
+$telephone=$_POST['telephone'];
+$customer_description=$_POST['customer_description'];
+$user=$_POST['user'];
+$pass1=$_POST['pass'];
+$pass2=$_POST['con'];
+
+if (isset($fname) && $_POST['user']!=null && $_POST['Submit']) {
+  if($pass1==$pass2){
+$sql="INSERT INTO customer(Customer_Name,Customer_Lastname,Gender,Age,Birthdate,Address,Province,Zipcode,
+Telephone,Customer_Description,username,password)
+VALUES('$fname','$lname','$garden','$age','$date','$address','$province','$zipcode',
+  '$telephone','$customer_description','$user','$pass')";
+
+mysql_query($sql);
+  header('location: ./Lab7_55543206062-5.php');
+
+  }else{
+echo "รหัสผ่านไม่ตรงกัน";
+  }
+  
+
+}
+
+if (isset($_POST['Cancel'])) {
+  header('location: ./Lab7_55543206062-5.php');
+
+}
+if (isset($fname) && $_POST['user']==null && $_POST['Submit']) {
+  echo "กรุณากรอกข้อมูลของท่านให้ครบครับ";
+ 
+ }
+?>
+
+</center>
+</body>
+</html>
