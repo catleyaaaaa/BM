@@ -1,0 +1,23 @@
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+
+<body style="background-color:#99CCFF">
+<body background="http://staging2.elias-savion.com/stbank/App_Themes/Images/bg.gif">
+	
+<center> <br><br><br><br>
+
+	<?php
+		session_start();
+		session_destroy();
+
+		echo "ออกจากระบบเรียบร้อยแล้ว !! <br> เรากำลังจะส่งคุณ ไปยังหน้าล็อกอินใหม่อีกครั้งครับ !!! <br>";
+
+		header("refresh:3; url=./login.php");
+	?>
+
+</center>
+</body>
+</html>
