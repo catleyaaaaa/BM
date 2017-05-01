@@ -1,0 +1,33 @@
+<?php
+
+	session_start();
+	mysql_connect("localhost","root","1234");
+	mysql_select_db("mystore");
+		$strSQL = "SELECT * FROM customer WHERE customer.username = '{$_POST['txtUsername']}' and customer.password = '{$_POST['txtPassword']}'";
+		$result = mysql_query($strSQL);
+
+			$i=0;
+			while ($row = mysql_fetch_array($result) ) 
+		   	{
+				$data=$row;
+				$i++;
+			}
+
+			if($i==0)
+			{
+
+					header('location:Lab8_55543206062-5.php');
+			}
+
+			else
+
+			{
+
+				$_SESSION["UserID"] = $data["username"];
+
+				session_write_close();
+				header("location:Lab8_55543206062-5.php");
+				
+		}
+		mysql_close();
+?>
