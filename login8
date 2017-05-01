@@ -1,0 +1,33 @@
+
+<html>
+<head>
+</head>
+
+<body style="background-color:#99CCFF">
+<body background="http://staging2.elias-savion.com/stbank/App_Themes/Images/bg.gif">
+  
+<center>
+
+  <form  method="POST" action="checklogin.php">
+    <br><br><br><font color="blue" size = 5>Log_In</font><br><br>
+        
+        Username : 
+          
+            <input name="txtUsername" type="text" id="txtUsername">
+         <br>
+         <br>
+
+        Password :&nbsp;
+            <input name="txtPassword" type="password" id="txtPassword">
+        <br>  
+        <br>
+
+        <input type="submit" name="Submit" value="Log_In">
+              <br><br><br><br><br><br><br><br><br>
+              <font color="red" size = 4>Test</font><br><br>
+                  Username : root<br>
+                  Password : 1234</center>
+  </form>
+</center>
+</body>
+</html>
