@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<?php
+ob_start();
+?>
+<html>
+<body style="background-color:#99CCFF" >
+<body background="http://i354.photobucket.com/albums/r434/kathy2516/wallpaper/blue-w/1208530443.jpg">
+  
+<script language="javascript">
+function fncSubmit()
+{
+
+      if(document.form1.fname.value=="" ||
+            document.form1.lname.value=="" ||
+            document.form1.date.value==""||
+            document.form1.address.value=="" ||
+            document.form1.province.value=="" ||
+            document.form1.zipcode.value=="" ||
+            document.form1.telephone.value=="" ||
+            document.form1.user.value=="" ||
+            document.form1.pass.value=="" ||
+            document.form1.con.value=="" ){
+
+alert('กรุณากรอกข้อมูลของท่านให้ครบถ้วน') ;
+            return false ;
+}
+
+      if(document.form1.gender.value!="Male" && document.form1.gender.value!="Female")
+      {
+            alert('กรุณากรอกข้อมูลของท่านให้ครบถ้วน') ;
+            return false ;
+      }     
+
+      if(document.form1.pass.value != document.form1.con.value)
+      {
+            alert('รหัสผ่านไม่ตรงกัน');
+            document.form1.pass.focus();
+            return false;
+      }
+      
+
+      document.form1.submit();
+}
+</script>
+
+
+<form name="form1" action="" method="post" OnSubmit="JavaScript:return fncSubmit();">
+<center><fieldset style ="width:40%">
+
+  	<legend><font color="blue" size = 5>ข้อมูลลูกค้า</font></legend>
+  	<center><table>
+  		<tr>
+  			<td>ชื่อ :</td>
+  			<td><input type="text" name="fname"></td>
+  		</tr>
+  		<tr>
+  			<td>นามสกุล :</td>
+  			<td><input type="text" name="lname"></td>
+  		</tr>
+  		<tr>
+  			<td>เพศ:</td>
+  			<td><input type="radio" name="gender" value="Male"> Male <input type="radio" name="gender" value="Female"> Female </td>
+  		</tr>
+      <tr>
+        <td>อายุ :</td>
+        <td><input type="text" name="age"></td>
+      </tr>
+  		<tr>
+  			<td>วัน-เดือน-ปี เกิด :</td>
+  			<td><input type="date" name="date"></td>
+  		<tr>
+        <td>ที่อยู่:</td>
+        <td><input type="text" name="address"></td>
+      </tr>
+      <tr>
+        <td>จังหวัด:</td>
+        <td><select name="province" id="province">
+        <?php
+          $province=array('จังหวัด',"เชียงราย","เชียงใหม่","น่าน","พะเยา","แพร่","แม่ฮ่องสอน","ลำปาง","ลำพูน","อุตรดิตถ์");
+          for($i=0;$i<=9;$i++)
+          {
+            echo "<option value ='".$province[$i]."'>".$province[$i]."</option>";
+          }
+        ?>
+      </select>
+      </tr>
+      <tr>
+        <td>รหัสไปรษณีย์ :</td>
+        <td><input type="text" name="zipcode"></td>
+      </tr>
+      <tr>
+        <td>โทรศัพท์ :</td>
+        <td><input type="text" name="telephone"></td>
+      </tr>
+      <tr>
+        <td>รายละเอียดอื่นๆ:</td>
+        <td><input type="text" name="customer_description"></td>
+      </tr>
+  		</tr>
+  	</table></center>
+</fieldset>
+
+<fieldset style ="width:40%">
+  	<legend><font color="red" size = 5>Account ของลูกค้า</font></legend>
+    <center><table>
+      <tr>
+        <td>Username :</td>
+        <td><input type="text" name="user"></td>
+      </tr>
+      <tr>
+        <td>Password :</td>
+        <td><input type="password" name="pass"></td>
+      </tr>
+      <tr>
+        <td>Confirm Password :</td>
+        <td><input type="password" name="con"></td>
+      </tr>
+     
+      <tr>
+      
+        <td><input type="Submit" value="Submit" name="Submit"></td>
+        <td><input type="Reset" value="Cancel" name="Cancel"></td>
+        
+      </tr></table>
+
+</form>
+</fieldset>
+
+<?php
+$host="localhost";
+$user="root";
+$pass="1234";
+$db="mystore";
+
+mysql_connect("localhost", "root", "1234") or die(mysql_error()); 
+mysql_select_db("mystore") or die(mysql_error());
+
+error_reporting( error_reporting() & ~E_NOTICE );
+
+mysql_query("SET NAMES UTF8");
+$fname=$_POST['fname'];
+$lname=$_POST['lname'];
+$garden=$_POST['gender'];
+$age=$_POST['age'];
+$date=$_POST['date'];
+$address=$_POST['address'];
+$province=$_POST['province'];
+$zipcode=$_POST['zipcode'];
+$telephone=$_POST['telephone'];
+$customer_description=$_POST['customer_description'];
+$user=$_POST['user'];
+$pass1=$_POST['pass'];
+$pass2=$_POST['con'];
+
+if (isset($_POST["Submit"])) {
+$sql="INSERT INTO customer(Customer_Name,Customer_Lastname,Gender,Age,Birthdate,Address,Province,Zipcode,
+Telephone,Customer_Description,username,password)
+VALUES('$fname','$lname','$garden','$age','$date','$address','$province','$zipcode',
+  '$telephone','$customer_description','$user','$pass')";
+
+mysql_query($sql);
+  header('location: ./Lab9_55543206062-5.php');
+
+  
+}
+?>
+</center>
+</body>
+</html>
